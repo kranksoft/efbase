@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Contains useful baseclasses which can be used when starting up a new asp.net core application</Description>
+    <Authors>Terje Innerdal</Authors>
+    <Company>Kranksoft</Company>
   </PropertyGroup>
 
   <ItemGroup>
