@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Kranksoft.EF.Base
 {
     public class Country
     {
+        [ScaffoldColumn(false), Editable(false)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string PhoneCode { get; set; }

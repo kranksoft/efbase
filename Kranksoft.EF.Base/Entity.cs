@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 
 namespace Kranksoft.EF.Base
 {
@@ -19,7 +22,6 @@ namespace Kranksoft.EF.Base
         DateTime? ModifiedDate { get; set; }
         string CreatedBy { get; set; }
         string ModifiedBy { get; set; }
-        byte[] Version { get; set; }
     }
 
     public interface IEntity<T> : IEntity
@@ -31,6 +33,7 @@ namespace Kranksoft.EF.Base
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ScaffoldColumn(false)]
         public T Id { get; set; }
         object IEntity.Id
         {
@@ -38,8 +41,13 @@ namespace Kranksoft.EF.Base
             set => Id = (T)value;
         }
 
+        private string _name;
         [MaxLength(24)]
-        public string Name { get; set; }
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
 
         private DateTime? createdDate;
         [DataType(DataType.DateTime)]
