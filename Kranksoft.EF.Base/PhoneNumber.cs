@@ -11,22 +11,26 @@ namespace Kranksoft.EF.Base
     public class PhoneNumber : INotifyPropertyChanged
     {
         #region Fields
-        private int id;
-        private string number;
-        private string phoneType;
-        private Party party;
+        private int _id;
+        private string _number;
+        private PhoneType _phoneType;
+        private Party _party;
         #endregion
 
         #region Properties
         [ScaffoldColumn(false), Editable(false)]
-        public int Id { get => id; protected set => SetPropertyValue(ref id, value); }
+        public int Id { get => _id; protected set => SetPropertyValue(ref _id, value); }
         [MaxLength(15), DataType(DataType.PhoneNumber)]
-        public string Number { get => number; set => SetPropertyValue(ref number, value); }
-        public string PhoneType { get => phoneType; set => SetPropertyValue(ref phoneType, value); }
-        public Party Party { get => party; set => SetReferencePropertyValue(ref party, value); }
+        public string Number { get => _number; set => SetPropertyValue(ref _number, value); }
+        [EnumDataType(typeof(PhoneType))]
+        public PhoneType PhoneType { get => _phoneType; set => SetPropertyValue(ref _phoneType, value); }
+        public Party Party { get => _party; set => SetReferencePropertyValue(ref _party, value); }
         #endregion
 
-        public override string ToString() => Number;
+        public override string ToString()
+        {
+            return Number;
+        }
 
         #region INotifyPropertyChanged
         private PropertyChangedEventHandler propertyChanged;
@@ -81,6 +85,13 @@ namespace Kranksoft.EF.Base
             remove { propertyChanged -= value; }
         }
         #endregion
+    }
+
+    public enum PhoneType
+    {
+        Mobile,
+        LandLine,
+        Satelite
     }
 }
 

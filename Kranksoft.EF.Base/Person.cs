@@ -27,7 +27,7 @@ namespace Kranksoft.EF.Base
         /// <summary>
         /// Gets or sets a Person's last name.
         /// </summary>
-        [Required,DisplayName("Last name")]
+        [Required, DisplayName("Last name")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Last name cannot be longer than 50 characters.")]
         public string LastName { get => _lastName; set => SetPropertyValue(ref _lastName, value); }
 
