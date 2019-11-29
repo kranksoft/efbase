@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 namespace Kranksoft.EF.Base
 {
     /// <summary>
-    /// A PhoneNumber for a Party with a PhoneType and a Number.
+    /// A PhoneNumber owned by a Party.
     /// </summary>
     public class PhoneNumber : INotifyPropertyChanged
     {
@@ -33,7 +33,7 @@ namespace Kranksoft.EF.Base
         }
 
         #region INotifyPropertyChanged
-        private PropertyChangedEventHandler propertyChanged;
+        protected PropertyChangedEventHandler propertyChanged;
         protected bool SetPropertyValue<T>(ref T propertyValue, T newValue, [CallerMemberName]string propertyName = null) where T : struct
         {
             if (EqualityComparer<T>.Default.Equals(propertyValue, newValue))

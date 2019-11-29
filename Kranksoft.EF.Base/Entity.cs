@@ -4,15 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kranksoft.EF.Base
 {
-    /// <summary>
-    /// Entity Framework base class with generic type for the Id column.
-    /// </summary>
-    public interface IModifiableEntity
-    {
-        string Name { get; set; }
-    }
-
-    public interface IEntity : IModifiableEntity
+    public interface IEntity
     {
         object Id { get; set; }
         DateTime CreatedDate { get; set; }
